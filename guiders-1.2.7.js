@@ -160,6 +160,13 @@ var guiders = (function($) {
     // topMarginOfBody corrects positioning if body has a top margin set on it.
     var topMarginOfBody = $("body").outerHeight(true) - $("body").outerHeight(false);
     top -= topMarginOfBody;
+	
+	// add on the offset of the iframe
+	if (myGuider.iframe) {
+		var iframeOffset = $(myGuider.iframe).offset();
+		top += iframeOffset.top;
+		left += iframeOffset.left;
+	}
 
     // Now, take into account how the guider should be positioned relative to the attachTo element.
     // e.g. top left, bottom center, etc.
